@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b70">
+  <title>Business Management Software</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h2>Business Manager</h2>
+      <p>ব্যবসা পরিচালনা সহজ করুন</p>
+    </div>
+    <button id="logoutBtn" class="hidden">লগআউট</button>
+  </header>
+
+  <main class="container">
+    <section id="message" class="message hidden" role="status"></section>
+
+    <section id="authSection" class="panel">
+      <h1>স্বাগতম</h1>
+      <p>আপনার ব্যবসার অ্যাকাউন্টে প্রবেশ করুন</p>
+
+      <div class="tabs">
+        <button id="loginTab" class="active">লগইন</button>
+        <button id="signupTab">নতুন অ্যাকাউন্ট</button>
+      </div>
+
+      <form id="loginForm">
+        <label for="loginEmail">ইমেইল</label>
+        <input id="loginEmail" type="email" required autocomplete="email"
+               placeholder="আপনার ইমেইল">
+
+        <label for="loginPassword">পাসওয়ার্ড</label>
+        <input id="loginPassword" type="password" required
+               autocomplete="current-password" placeholder="পাসওয়ার্ড">
+
+        <button class="primary" type="submit">লগইন করুন</button>
+      </form>
+
+      <form id="signupForm" class="hidden">
+        <label for="businessName">ব্যবসার নাম</label>
+        <input id="businessName" required maxlength="150"
+               placeholder="যেমন: মেসার্স রহিমা ট্রেডার্স">
+
+        <label for="ownerName">মালিকের নাম</label>
+        <input id="ownerName" required maxlength="100"
+               placeholder="আপনার নাম">
+
+        <label for="signupPhone">মোবাইল নম্বর</label>
+        <input id="signupPhone" type="tel" required maxlength="20"
+               placeholder="01XXXXXXXXX">
+
+        <label for="signupEmail">ইমেইল</label>
+        <input id="signupEmail" type="email" required autocomplete="email"
+               placeholder="আপনার ইমেইল">
+
+        <label for="signupPassword">পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)</label>
+        <input id="signupPassword" type="password" minlength="6" required
+               autocomplete="new-password" placeholder="নতুন পাসওয়ার্ড">
+
+        <button class="primary" type="submit">অ্যাকাউন্ট তৈরি করুন</button>
+      </form>
+
+      <p class="hint">মাসিক সাবস্ক্রিপশন: ৳৫০০। পেমেন্ট অনুমোদনের পর সেবা চালু হবে।</p>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="welcome">
+        <h1 id="welcomeTitle">ব্যবসার ড্যাশবোর্ড</h1>
+        <p>আপনার ব্যবসার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <span>সাবস্ক্রিপশন</span>
+          <h2 id="subscriptionStatus">যাচাই হচ্ছে</h2>
+        </article>
+        <article class="card">
+          <span>মাসিক ফি</span>
+          <h2>৳৫০০</h2>
+        </article>
+        <article class="card">
+          <span>মেয়াদ শেষ</span>
+          <h2 id="expiryDate">—</h2>
+        </article>
+      </div>
+
+      <section class="panel">
+        <h2>সাবস্ক্রিপশন পেমেন্ট</h2>
+        <p>পেমেন্ট করার আগে প্রশাসকের কাছ থেকে সঠিক bKash/Nagad নম্বর নিশ্চিত করুন।</p>
+
+        <form id="paymentForm">
+          <label for="paymentMethod">পেমেন্ট মাধ্যম</label>
+          <select id="paymentMethod" required>
+            <option value="">নির্বাচন করুন</option>
+            <option value="bKash">bKash</option>
+            <option value="Nagad">Nagad</option>
+          </select>
+
+          <label for="paymentPhone">যে নম্বর থেকে টাকা পাঠিয়েছেন</label>
+          <input id="paymentPhone" type="tel" required maxlength="20"
+                 placeholder="01XXXXXXXXX">
+
+          <label for="transactionId">Transaction ID</label>
+          <input id="transactionId" required maxlength="100"
+                 placeholder="Transaction ID লিখুন">
+
+          <button type="submit" class="primary">পেমেন্ট যাচাইয়ের জন্য জমা দিন</button>
+        </form>
+      </section>
+
+      <section id="adminPanel" class="panel hidden">
+        <h2>Super Admin Panel</h2>
+        <p>পেমেন্ট ও অ্যাকাউন্ট পরিচালনার অংশ।</p>
+        <button id="refreshAdmin" class="secondary">তথ্য রিফ্রেশ করুন</button>
+        <div id="adminContent"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>Business Management Software</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
