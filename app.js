@@ -1,4 +1,3 @@
-JavaScript
 
 /* Business Management Software
    Uses Supabase Auth and database.
